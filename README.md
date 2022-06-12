@@ -1,4 +1,4 @@
-# Funda.Assignment
+# Funda Assignment 
 
 I used a .NET 6 console app with the Clean Architecture for this solution.
 
