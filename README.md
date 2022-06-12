@@ -11,23 +11,23 @@ File is DependencyInjection.cs - where you can find the container being initiali
 
 ### Application
 
- - The Application project contains the entry points to the business logic - the Services(or Use Cases). 
+The Application project contains the entry points to the business logic - the Services(or Use Cases). 
 It also defines the interfaces for repositories that it needs in order to execute the business logic. This way it is fully independently testable from the infrastructure. You do not need any reference to the Infrastructure project in order to test it.
 
 ### Infrastructure
 
-- The Infrastructure project is used to implement the interfaces that the Application needs. It also takes control of what implementations the Application uses. 
+The Infrastructure project is used to implement the interfaces that the Application needs. It also takes control of what implementations the Application uses. 
 For example in this project, the Application needs IListingRepository. The Infrastructure project is "plugged in" and with it's DependencyInjection.cs file, and defines what implementations it wants the Application to use.
 This makes it so that the Application is totally independent and is not concerned with the implemenations at all.  
 
 ### Domain
 
--The domain project contains the domain objects driving the Application.
+The domain project contains the domain objects driving the Application.
 
 
 ### HttpListingRepository Implementation
 
-- I've created two ways of doing the API calls, one is doing them in parallel, it fires off all the requests at the same time and waits for the results. The other one is doing it sequentially, after one request is done the next one will be fired. 
+I've created two ways of doing the API calls, one is doing them in parallel, it fires off all the requests at the same time and waits for the results. The other one is doing it sequentially, after one request is done the next one will be fired. 
 
 Depending on the intended usage of this project, one or the other can be used.
 
@@ -44,5 +44,5 @@ This can be also made configurable and "played" with in order to optimize for pr
 
 ### Tests
 
-- I've created unit tests for the Application for testability demonstration purposes, you can find them in the Tests solution folder. 
+I've created unit tests for the Application for testability demonstration purposes, you can find them in the Tests solution folder. 
 I used Bogus for fake data, Moq for mocking, xUnit as the actual test runner and FluentAssertions for cleaner asserts.
