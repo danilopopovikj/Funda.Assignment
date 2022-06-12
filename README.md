@@ -37,7 +37,7 @@ I tried changing the PageSize, but the API still returned 25 results, so if that
 
 Before running this in production I would look into the intentions and then play with parallel/sequential, pageSize and retry policy timeouts in order to optimize it for it's purpose.
 
-For error handling and retries  I used Polly, you can see the policy defined in: Funda.Assignment.Danilo.Infrastructure\PollyPolicies\RetryPolicies.cs
+For error handling and retries  I used Polly, you can see the policy defined in RetryPolicies.cs
 It handles basic http errors - like 5xx, timeouts, 429(TooManyRequests), and because I noticed that the API returns 401 in case of too many requests, I added that one in too.
 It is configured for 6 retry attempts, each 10 seconds longer than the last one.
 This can be also made configurable and "played" with in order to optimize for production.
