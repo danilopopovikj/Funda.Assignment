@@ -43,7 +43,6 @@ namespace Funda.Assignment.Danilo.Infrastructure.HttpRepositories.Listings
 
             var pageNumber = 1;
             // The API has an issue, only returns 25 objects, even though some other pageSize is sent.
-            // Otherwise, we can make this configurable and "play" with it to optimize
             var pageSize = 25;
 
             // Logging purpose only
@@ -63,10 +62,8 @@ namespace Funda.Assignment.Danilo.Infrastructure.HttpRepositories.Listings
                 apiListings.AddRange(listingsResponse!.Objects);
 
                 if (listingsResponse.TotaalAantalObjecten == apiListings.Count)
-                {
                     moreDataExists = false;
-                    break;
-                }
+
                 pageNumber++;
             }
 
@@ -91,7 +88,6 @@ namespace Funda.Assignment.Danilo.Infrastructure.HttpRepositories.Listings
 
             var pageNumber = 1;
             // The API has an issue, only returns 25 objects, even though some other pageSize is sent.
-            // Otherwise, we can make this configurable and "play" with it to optimize
             var pageSize = 25;
 
             uriBuilder.Query = GetQueryString(withGarden, pageNumber, pageSize);
@@ -131,8 +127,6 @@ namespace Funda.Assignment.Danilo.Infrastructure.HttpRepositories.Listings
 
             return apiListings
                 .Select(x => new Listing { MakelaarId = x.MakelaarId, MakelaarNaam = x.MakelaarNaam });
-
-
         }
 
         private string GetQueryString(bool withGarden, int pageNumber, int pageSize)
@@ -147,6 +141,5 @@ namespace Funda.Assignment.Danilo.Infrastructure.HttpRepositories.Listings
 
             return queryString;
         }
-
     }
 }

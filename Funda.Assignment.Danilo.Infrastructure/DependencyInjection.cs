@@ -7,12 +7,13 @@ namespace Funda.Assignment.Danilo.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, ListingApiConfig listingApiConfig)
         {
             services.AddHttpClient(nameof(HttpListingRepository))
                 .AddPolicyHandler(RetryPolicies.GetPolicy());
 
             return services
+                .AddSingleton(listingApiConfig)
                 .AddSingleton<IListingRepository, HttpListingRepository>();
         }
   

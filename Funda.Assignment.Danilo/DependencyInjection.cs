@@ -22,8 +22,7 @@ namespace Funda.Assignment.Danilo.Console
             return new ServiceCollection()
                 .AddLogging(configure => configure.AddConsole())
                 .AddApplication()
-                .AddInfrastructure()
-                .AddSingleton(listingApiConfig)
+                .AddInfrastructure(listingApiConfig)
                 .BuildServiceProvider();
         }
     }
