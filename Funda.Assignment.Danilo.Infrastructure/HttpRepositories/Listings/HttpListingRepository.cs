@@ -6,16 +6,16 @@ using Newtonsoft.Json;
 
 namespace Funda.Assignment.Danilo.Infrastructure.HttpRepositories.Listings
 {
-    public class ListingRepository : IListingRepository
+    public class HttpListingRepository : IListingRepository
     {
         private const int HTTPCLIENT_TIMEOUT_IN_SECONDS = 300;
 
         private readonly HttpClient _httpClient;
         private readonly ListingApiConfig _listingApiConfig;
         private readonly ILogger _logger;
-        public ListingRepository(IHttpClientFactory httpClientFactory, ListingApiConfig listingApiConfig, ILogger<ListingRepository> logger)
+        public HttpListingRepository(IHttpClientFactory httpClientFactory, ListingApiConfig listingApiConfig, ILogger<HttpListingRepository> logger)
         {
-            _httpClient = httpClientFactory.CreateClient(nameof(ListingRepository));
+            _httpClient = httpClientFactory.CreateClient(nameof(HttpListingRepository));
             _httpClient.Timeout = TimeSpan.FromSeconds(HTTPCLIENT_TIMEOUT_IN_SECONDS);
 
             _listingApiConfig = listingApiConfig;

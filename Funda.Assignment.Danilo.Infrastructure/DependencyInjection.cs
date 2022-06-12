@@ -9,11 +9,11 @@ namespace Funda.Assignment.Danilo.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddHttpClient(nameof(ListingRepository))
+            services.AddHttpClient(nameof(HttpListingRepository))
                 .AddPolicyHandler(RetryPolicies.GetPolicy());
 
             return services
-                .AddSingleton<IListingRepository, ListingRepository>();
+                .AddSingleton<IListingRepository, HttpListingRepository>();
         }
   
     }
