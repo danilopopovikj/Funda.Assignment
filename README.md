@@ -31,7 +31,7 @@ I've created two ways of doing the API calls, one is doing them in parallel, it 
 
 Depending on the intended usage of this project, one or the other can be used.
 
-For example, if it's an overnight sync job it can be done sequentially as it will not put as much instant load on the API. Or if it's something that needs to happen fast, in the scope of a request - the parallel method can be used.
+For example, if it's an overnight sync job it can be done sequentially as it will not put as much instant load on the API - even adding a small delay between the calls can be useful. Or if it's something that needs to happen fast, in the scope of a request - the parallel method can be used.
 
 I tried changing the PageSize, but the API still returned 25 results, so if that is fixed, that is another parameter that can be "played" with.
 
